@@ -135,6 +135,11 @@ load-nvmrc
 
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias stow='stow -t ~'
+alias art="sail artisan"
+alias add="git add ."
+alias commit="git commit -m"
+alias kohpa="git push"
+alias dhama="git pull"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 

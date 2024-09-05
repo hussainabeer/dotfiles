@@ -1,34 +1,29 @@
 #!/bin/sh
-ENTRIES=`ibus read-config | grep engines-order | sed 's/engines-order:\|\[\|\]\| //g' | sed 's/,/\n/g' | sed "s/'//g"`
+# Get the list of input engines
+ENTRIES=$(ibus read-config | grep engines-order | sed 's/engines-order:\|\[\|\]\| //g' | sed 's/,/\n/g' | sed "s/'//g")
 
-# OUTPUT=""
-# for entry in $ENTRIES
-# do
-#     e=`echo $entry | awk -F ':' '{print $1'}`
-#     la=`echo $entry | awk -F ':' '{print $2'}`
-#     la_v=`echo $entry | awk -F ':' '{print $3'}`
-#     lang=`echo $entry | awk -F ':' '{print $4'}`
-#     if [ ! ${lang} = '\n' ]
-#     then
-#         OUTPUT="$OUTPUT language: $lang"
-#     fi
-#     if [ ! ${la} = '\n' ]
-#     then
-#         if [ ! ${la_v} = '\n' ]
-#            then
-#                OUTPUT="$OUTPUT layout: $la, $la_v"
-#         else
-#             OUTPUT="$OUTPUT layout: $la"
-#         fi
-#     fi
-#     OUTPUT="$OUTPUT engine: $e\n"
-# done
+# Get the currently active engine
+CURRENT_ENGINE=$(ibus engine)
 
-SELECTION=`printf "%s\n" $ENTRIES | rofi -dmenu -i -p 'Select'`
+# Flag to indicate whether to switch to the next engine
+NEXT=false
 
-if [ -n $SELECTION ] && [ ! $SELECTION = '\n' ]
-then
-    ibus engine $SELECTION
-fi
+# Loop through the engines
+for entry in $ENTRIES; do
+  if [ "$NEXT" = true ]; then
+    # Switch to the next engine after finding the current one
+    ibus engine "$entry"
+    exit 0
+  fi
+
+  # If the current engine matches, set the flag to true to switch to the next one in the next iteration
+  if [ "$entry" = "$CURRENT_ENGINE" ]; then
+    NEXT=true
+  fi
+done
+
+# If we reach the end of the list without switching, loop back to the first engine
+FIRST_ENGINE=$(echo "$ENTRIES" | head -n 1)
+ibus engine "$FIRST_ENGINE"
 
 exit 0
