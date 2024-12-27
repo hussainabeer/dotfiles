@@ -142,5 +142,18 @@ alias kohpa="git push"
 alias dhama="git pull"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$PATH:$JAVA_HOME/bin
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools/bin
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export ANDROID_AVD_HOME=$HOME/.android/avd
+alias emulator='$ANDROID_SDK_ROOT/tools/emulator'
 
 eval `keychain --eval --agents ssh id_rsa --quiet`
