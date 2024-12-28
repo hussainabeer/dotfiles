@@ -8,8 +8,9 @@ local config = wezterm.config_builder()
 config.enable_tab_bar = false
 
 -- Font Settings
-config.font_size = 9.5
+config.font_size = 9.2
 config.font = wezterm.font("Fira Code iScript")
+config.line_height = 1.2
 
 -- Color Scheme
 config.color_scheme = "Gruvbox dark, medium (base16)"
