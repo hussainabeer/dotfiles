@@ -22,17 +22,17 @@ return {
       invert_tabline = false,
       invert_intend_guides = false,
       inverse = false, -- invert background for search, diffs, statuslines and errorsgruv
-      contrast = 'soft', -- can be "hard", "soft" or empty string
+      contrast = 'hard', -- can be "hard", "soft" or empty string
       palette_overrides = {},
       overrides = {
-        Function = { fg = '#8ec07c', bold = true },
-        Tag = { fg = '#8ec07c' },
-        String = { fg = '#689d6a', italic = false },
-        Delimiter = { fg = '#689d6a', bold = true },
-
-        -- This somehow fixes the lualine weird white corners lol
-        StatusLine = { bg = '#282828', reverse = false },
-        StatusLineNC = { bg = '#282828', reverse = false },
+        -- Function = { fg = '#8ec07c', bold = true },
+        -- Tag = { fg = '#8ec07c' },
+        -- String = { fg = '#689d6a', italic = false },
+        -- Delimiter = { fg = '#689d6a', bold = true },
+        --
+        -- -- This somehow fixes the lualine weird white corners lol
+        -- StatusLine = { bg = '#282828', reverse = false },
+        -- StatusLineNC = { bg = '#282828', reverse = false },
       },
       dim_inactive = false,
       transparent_mode = false,

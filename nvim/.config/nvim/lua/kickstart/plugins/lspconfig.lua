@@ -194,7 +194,13 @@ return {
         -- ts_ls = {},
         --
         --
-
+        html = {
+          filetypes = { 'html' },
+        },
+        intelephense = {
+          filetypes = { 'php' },
+        },
+        volar = {},
         ts_ls = {
           init_options = {
             plugins = {
@@ -207,7 +213,6 @@ return {
           },
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
-        volar = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
